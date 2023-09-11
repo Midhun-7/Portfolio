@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './Home'; // Assuming your main React component is named App
-// import AppRouter from './Router';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home/>
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+
