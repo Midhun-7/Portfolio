@@ -5,13 +5,13 @@ function Portfolio() {
   // Sample data for portfolio projects (you can replace this with your own data)
   const projects = [
     {
-      title: 'Project 1',
+      title: 'Keeper App',
       description: 'Description of Project 1...',
       imageUrl: 'project1.jpg', // Replace with the path to your project's image
       projectUrl: '/project1', // Use a relative URL for internal navigation
     },
     {
-      title: 'Project 2',
+      title: 'Box Office App',
       description: 'Description of Project 2...',
       imageUrl: 'project2.jpg', // Replace with the path to your project's image
       projectUrl: '/project2', // Use a relative URL for internal navigation
@@ -33,6 +33,14 @@ function Portfolio() {
                 {/* <Link to={project.projectUrl} className="btn btn-primary">
                   View Project
                 </Link> */}
+                <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
               </div>
             </div>
           </div>
