@@ -9,6 +9,8 @@ function About() {
 
       <p>My interest in web development and machine learning led me to participate in several hackathons, where I have honed my skills in problem-solving, teamwork, leadership, and communication. In addition to my technical skills, I possess a strong work ethic, eagerness to learn, and a creative mindset, which allows me to approach complex problems with innovative solutions.
       </p>
+
+      <p>Skills: HTML5, CSS3, Javascript, React.js, Node.js, Express.js, EJS, MySQL, MongoDB</p>
     </div>
   );
 }
