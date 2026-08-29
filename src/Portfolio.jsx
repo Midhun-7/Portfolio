@@ -33,14 +33,14 @@ function Portfolio() {
                 {/* <Link to={project.projectUrl} className="btn btn-primary">
                   View Project
                 </Link> */}
-                <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="..."></img>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
+                <div className="card" style={{ width: '18rem' }}>
+                  <img src={project.imageUrl} className="card-img-top" alt={project.title} />
+                  <div className="card-body">
+                    <h5 className="card-title">{project.title}</h5>
+                    <p className="card-text">{project.description}</p>
+                    <a href={project.projectUrl} className="btn btn-primary">View Project</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
