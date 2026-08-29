@@ -1,5 +1,4 @@
 import React from 'react';
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import About from './About';
 import Portfolio from './Portfolio';
@@ -8,13 +7,15 @@ import Home from './Home';
 
 function App() {
   return (
-    <div className="App">
+    <div className="min-h-screen bg-transparent text-slate-900">
       <Header />
-      <Home/>
-      <About/>
-      <Portfolio/>
-      <Contact/>
-      </div>
+      <main>
+        <Home />
+        <About />
+        <Portfolio />
+        <Contact />
+      </main>
+    </div>
   );
 }
 
