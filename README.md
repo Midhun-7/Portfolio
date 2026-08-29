@@ -2,6 +2,8 @@
 
 A modern, single-page developer portfolio built to showcase my projects, skills, and experience as a Software Engineer.
 
+**🌍 Live Demo:** [https://midhun-muraleedharan.netlify.app/](https://midhun-muraleedharan.netlify.app/)
+
 ## 🚀 Features
 
 - **Dark Theme UI**: A custom-designed, sleek dark mode interface with deep slate/indigo colors and glowing accents.
