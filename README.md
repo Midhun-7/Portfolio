@@ -48,7 +48,7 @@ npm run build
 
 ## 👨‍💻 About Me
 
-I am a Software Engineer (R&D) at Armada, based in Trivandrum, India, with a B.Tech in CS from College of Engineering Trivandrum. I'm passionate about building intuitive web applications, AI/ML, and solving real-world problems.
+I am a Software Engineer (R&D) at Armada, with a B.Tech in CS from College of Engineering Trivandrum. I'm passionate about building intuitive web applications, AI/ML, and solving real-world problems.
 
 **🔗 Links:**
 - GitHub: [@Midhun-7](https://github.com/Midhun-7)
