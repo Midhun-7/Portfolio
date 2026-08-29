@@ -1,79 +1,107 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+
+const item = {
+  hidden: { opacity: 0, y: 18 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.25, 0.4, 0.25, 1] } },
+};
 
 function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [sent, setSent] = useState(false);
+  const [focused, setFocused] = useState(null);
 
-  const handleChange = (e) => {
+  const handle = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setForm((p) => ({ ...p, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const submit = (e) => {
     e.preventDefault();
+    setSent(true);
   };
+
+  if (sent) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-col items-center justify-center gap-4 rounded-2xl border border-emerald-500/20 bg-emerald-500/[0.06] p-12 text-center"
+      >
+        <span className="text-5xl">✅</span>
+        <h3 className="text-xl font-bold text-emerald-400">Message sent!</h3>
+        <p className="text-sm text-slate-400">Thanks for reaching out. I&apos;ll get back to you soon.</p>
+      </motion.div>
+    );
+  }
+
+  const inputCls = (name) =>
+    `w-full rounded-xl border bg-[#0d0d16] px-4 py-3 text-sm text-slate-100 placeholder-slate-600 outline-none transition-all duration-200 ${
+      focused === name
+        ? 'border-blue-500/70 ring-2 ring-blue-500/20'
+        : 'border-white/[0.08] hover:border-white/[0.14]'
+    }`;
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-lg border border-slate-300 bg-white p-4 sm:p-6">
-      <div className="space-y-6">
-        <div>
-          <label htmlFor="name" className="mb-2 block text-base font-medium text-slate-700">
+    <form onSubmit={submit} className="rounded-2xl border border-white/[0.07] bg-[#111118] p-6 sm:p-8">
+      <motion.div
+        variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.09 } } }}
+        initial="hidden"
+        animate="visible"
+        className="space-y-5"
+      >
+        <motion.div variants={item}>
+          <label htmlFor="name" className="mb-2 block text-xs font-semibold uppercase tracking-widest text-slate-500">
             Name
           </label>
           <input
-            type="text"
-            className="w-full rounded-md border border-slate-300 bg-slate-50 px-3 py-3 text-base text-slate-900 outline-none transition focus:border-[#3b82f6]"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
+            id="name" name="name" type="text" required
+            placeholder="Your name"
+            value={form.name} onChange={handle}
+            onFocus={() => setFocused('name')} onBlur={() => setFocused(null)}
+            className={inputCls('name')}
           />
-        </div>
+        </motion.div>
 
-        <div>
-          <label htmlFor="email" className="mb-2 block text-base font-medium text-slate-700">
+        <motion.div variants={item}>
+          <label htmlFor="email" className="mb-2 block text-xs font-semibold uppercase tracking-widest text-slate-500">
             Email
           </label>
           <input
-            type="email"
-            className="w-full rounded-md border border-slate-300 bg-slate-50 px-3 py-3 text-base text-slate-900 outline-none transition focus:border-[#3b82f6]"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
+            id="email" name="email" type="email" required
+            placeholder="you@example.com"
+            value={form.email} onChange={handle}
+            onFocus={() => setFocused('email')} onBlur={() => setFocused(null)}
+            className={inputCls('email')}
           />
-        </div>
+        </motion.div>
 
-        <div>
-          <label htmlFor="message" className="mb-2 block text-base font-medium text-slate-700">
+        <motion.div variants={item}>
+          <label htmlFor="message" className="mb-2 block text-xs font-semibold uppercase tracking-widest text-slate-500">
             Message
           </label>
           <textarea
-            className="w-full rounded-md border border-slate-300 bg-slate-50 px-3 py-3 text-base text-slate-900 outline-none transition focus:border-[#3b82f6]"
-            id="message"
-            name="message"
-            rows="5"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          ></textarea>
-        </div>
+            id="message" name="message" rows="5" required
+            placeholder="Tell me about your project or idea..."
+            value={form.message} onChange={handle}
+            onFocus={() => setFocused('message')} onBlur={() => setFocused(null)}
+            className={`${inputCls('message')} resize-none`}
+          />
+        </motion.div>
 
-        <button
-          type="submit"
-          className="inline-flex rounded-md border border-slate-300 bg-slate-200 px-5 py-3 text-base font-medium text-slate-800 transition hover:bg-slate-300"
-        >
-          Send Message
-        </button>
-      </div>
+        <motion.div variants={item}>
+          <button
+            type="submit"
+            className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-500 transition-colors shadow-glow"
+          >
+            Send Message
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-4 w-4">
+              <path d="M2.87 2.298a.75.75 0 0 0-.812.123.75.75 0 0 0-.137.836l1.813 3.627a.75.75 0 0 0 .498.386L9.5 8l-5.268.73a.75.75 0 0 0-.498.386L1.921 12.743a.75.75 0 0 0 .137.836.75.75 0 0 0 .812.123l12.25-5.5a.75.75 0 0 0 0-1.364L2.87 2.298Z" />
+            </svg>
+          </button>
+        </motion.div>
+      </motion.div>
     </form>
   );
 }

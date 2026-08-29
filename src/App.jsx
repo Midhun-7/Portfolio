@@ -1,18 +1,20 @@
 import React from 'react';
 import Header from './Header';
-import About from './About';
-import Portfolio from './Portfolio';
+import Hero from './Hero';
+import Bento from './Bento';
+import Work from './Work';
+import Skills from './Skills';
 import Contact from './Contact';
-import Home from './Home';
 
 function App() {
   return (
-    <div className="min-h-screen bg-transparent text-slate-900">
+    <div className="min-h-screen bg-[#0a0a0f] text-slate-100">
       <Header />
       <main>
-        <Home />
-        <About />
-        <Portfolio />
+        <Hero />
+        <Bento />
+        <Work />
+        <Skills />
         <Contact />
       </main>
     </div>
