@@ -49,7 +49,7 @@ function Header() {
                 to={item.to}
                 smooth
                 duration={600}
-                offset={-48}
+                offset={-64}
                 spy
                 activeClass="!text-white !bg-white/[0.08]"
                 className="cursor-pointer px-4 py-2 rounded-lg text-sm font-medium text-slate-500 hover:text-white hover:bg-white/[0.06] transition-all"
@@ -64,7 +64,7 @@ function Header() {
             to="contact"
             smooth
             duration={600}
-            offset={-48}
+            offset={-64}
             className="cursor-pointer inline-flex items-center gap-2 rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-500 transition-all shadow-glow-sm"
           >
             Hire Me
