@@ -7,101 +7,108 @@ const categories = [
     label: 'Frontend',
     emoji: '🎨',
     desc: 'Building responsive, accessible user interfaces',
-    iconsUrl:
-      'https://skillicons.dev/icons?i=react,tailwind,ts,js,html,css&theme=dark&perline=6',
-    skills: ['React', 'Tailwind CSS', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3'],
-    accent: 'border-blue-500/20 hover:border-blue-500/40',
-    dot: 'bg-blue-500',
+    skills: [
+      { name: 'React', icon: 'react' },
+      { name: 'Tailwind CSS', icon: 'tailwind' },
+      { name: 'TypeScript', icon: 'ts' },
+      { name: 'JavaScript', icon: 'js' },
+      { name: 'HTML5', icon: 'html' },
+      { name: 'CSS3', icon: 'css' },
+    ],
+    accentBorder: 'border-blue-500/20 hover:border-blue-500/40',
+    accentBg: 'from-blue-500/[0.07] via-transparent to-transparent',
   },
   {
     label: 'Backend & Databases',
     emoji: '⚙️',
     desc: 'APIs, server-side logic, and data management',
-    iconsUrl:
-      'https://skillicons.dev/icons?i=go,py,cpp,postgres,nodejs,mongodb&theme=dark&perline=6',
-    skills: ['Go', 'Python', 'C++', 'PostgreSQL', 'Node.js', 'MongoDB'],
-    accent: 'border-purple-500/20 hover:border-purple-500/40',
-    dot: 'bg-purple-500',
+    skills: [
+      { name: 'Go', icon: 'go' },
+      { name: 'Python', icon: 'py' },
+      { name: 'C++', icon: 'cpp' },
+      { name: 'PostgreSQL', icon: 'postgres' },
+      { name: 'Node.js', icon: 'nodejs' },
+      { name: 'MongoDB', icon: 'mongodb' },
+    ],
+    accentBorder: 'border-purple-500/20 hover:border-purple-500/40',
+    accentBg: 'from-purple-500/[0.07] via-transparent to-transparent',
   },
   {
-    label: 'DevOps & Tools',
-    emoji: '🚀',
-    desc: 'Infrastructure, deployment, and developer tooling',
-    iconsUrl:
-      'https://skillicons.dev/icons?i=docker,kubernetes,git,github,githubactions,linux&theme=dark&perline=6',
-    skills: ['Docker', 'Kubernetes', 'Git', 'GitHub', 'GitHub Actions', 'Linux'],
-    accent: 'border-emerald-500/20 hover:border-emerald-500/40',
-    dot: 'bg-emerald-500',
+    label: 'Developer Tools',
+    emoji: '🛠️',
+    desc: 'Containers, version control, and CI/CD automation',
+    skills: [
+      { name: 'Docker', icon: 'docker' },
+      { name: 'Kubernetes', icon: 'kubernetes' },
+      { name: 'Git', icon: 'git' },
+      { name: 'GitHub', icon: 'github' },
+      { name: 'GitHub Actions', icon: 'githubactions' },
+    ],
+    accentBorder: 'border-emerald-500/20 hover:border-emerald-500/40',
+    accentBg: 'from-emerald-500/[0.07] via-transparent to-transparent',
   },
 ];
 
 function CategoryCard({ cat, index }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-60px' });
+  const isInView = useInView(ref, { once: true, margin: '-40px' });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 32 }}
+      initial={{ opacity: 0, y: 28 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.65, delay: index * 0.12, ease: [0.25, 0.4, 0.25, 1] }}
-      whileHover={{ y: -6, transition: { duration: 0.22 } }}
-      className={`rounded-2xl border bg-[#111118] p-6 transition-colors duration-300 ${cat.accent}`}
+      transition={{ duration: 0.55, delay: index * 0.12, ease: [0.25, 0.4, 0.25, 1] }}
+      whileHover={{ y: -5, transition: { duration: 0.2 } }}
+      className={`relative flex flex-col overflow-hidden rounded-2xl border bg-[#111118] bg-gradient-to-b ${cat.accentBg} p-5 sm:p-6 transition-all duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.55)] ${cat.accentBorder}`}
     >
-      {/* Header */}
-      <div className="mb-5 flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.05]">
-          <span className="text-xl">{cat.emoji}</span>
+      {/* Category Header */}
+      <div className="mb-3.5 flex items-center gap-3">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04]">
+          <span className="text-xl select-none">{cat.emoji}</span>
         </div>
         <div>
-          <h3 className="text-base font-bold text-slate-100">{cat.label}</h3>
-          <p className="text-xs text-slate-600 mt-0.5">{cat.desc}</p>
+          <h3 className="text-base sm:text-lg font-bold text-slate-100">{cat.label}</h3>
+          <p className="text-xs text-slate-500 mt-0.5">{cat.desc}</p>
         </div>
       </div>
 
-      {/* skillicons.dev image */}
-      <div className="mb-5 overflow-hidden rounded-xl bg-white/[0.02] p-3">
-        <img
-          src={cat.iconsUrl}
-          alt={`${cat.label} technologies`}
-          className="h-12 object-contain object-left"
-          loading="lazy"
-        />
-      </div>
-
-      {/* Text chips */}
-      <div className="flex flex-wrap gap-1.5">
-        {cat.skills.map((s) => (
-          <span
-            key={s}
-            className="rounded-md border border-white/[0.07] bg-white/[0.03] px-2.5 py-1 text-xs font-medium text-slate-500"
+      {/* Clean vertical skill list with icon inline */}
+      <ul className="flex flex-col gap-3.5 pt-4 border-t border-white/[0.06]">
+        {cat.skills.map((skill) => (
+          <li
+            key={skill.name}
+            className="flex items-center gap-3.5 text-base font-medium text-slate-200 hover:text-white transition-colors py-1"
           >
-            {s}
-          </span>
+            <img
+              src={`https://skillicons.dev/icons?i=${skill.icon}`}
+              alt={skill.name}
+              className="h-8 w-8 rounded-lg shrink-0 object-contain"
+              loading="lazy"
+            />
+            <span>{skill.name}</span>
+          </li>
         ))}
-      </div>
+      </ul>
     </motion.div>
   );
 }
 
 function Skills() {
   return (
-    <section id="skills" className="bg-[#0d0d15] px-4 py-24 sm:px-6 lg:px-8">
+    <section id="skills" className="bg-[#0d0d15] px-4 pt-10 pb-20 sm:px-6 lg:px-8 min-h-screen">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           label="Tech Stack"
           title="Skills & Technologies"
-          subtitle="Continuously expanding across web, backend, and infrastructure."
+          subtitle="Continuously expanding across web, backend, and modern tooling."
         />
 
-        <div className="grid gap-5 lg:grid-cols-3">
+        <div className="grid gap-6 lg:grid-cols-3">
           {categories.map((cat, i) => (
             <CategoryCard key={cat.label} cat={cat} index={i} />
           ))}
         </div>
-
-
-
       </div>
     </section>
   );

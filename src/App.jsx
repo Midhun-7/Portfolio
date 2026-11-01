@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './Header';
 import Hero from './Hero';
-import Bento from './Bento';
 import Work from './Work';
 import Skills from './Skills';
 import Contact from './Contact';
@@ -12,7 +11,6 @@ function App() {
       <Header />
       <main>
         <Hero />
-        <Bento />
         <Work />
         <Skills />
         <Contact />

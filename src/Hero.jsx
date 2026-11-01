@@ -229,8 +229,8 @@ function Hero() {
               <Link
                 to="work"
                 smooth
-                duration={600}
-                offset={-48}
+                duration={300}
+                offset={-64}
                 className="cursor-pointer inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-base font-semibold text-white hover:bg-blue-500 transition-all shadow-glow"
               >
                 View My Work

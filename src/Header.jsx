@@ -48,7 +48,7 @@ function Header() {
                 key={item.to}
                 to={item.to}
                 smooth
-                duration={600}
+                duration={300}
                 offset={-64}
                 spy
                 activeClass="!text-white !bg-white/[0.08]"
@@ -63,7 +63,7 @@ function Header() {
           <Link
             to="contact"
             smooth
-            duration={600}
+            duration={300}
             offset={-64}
             className="cursor-pointer inline-flex items-center gap-2 rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-500 transition-all shadow-glow-sm"
           >

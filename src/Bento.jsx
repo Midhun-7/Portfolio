@@ -54,10 +54,8 @@ function Bento() {
           </div>
         </Tile>
 
-
-
-        {/* 3 — Education */}
-        <Tile index={2}>
+        {/* 2 — Education */}
+        <Tile index={1}>
           <Label>Education</Label>
           <div className="text-base font-bold text-slate-100">B.Tech Computer Science</div>
           <div className="mt-1 text-sm font-medium text-blue-400">College of Engineering Trivandrum</div>
@@ -67,8 +65,8 @@ function Bento() {
           </div>
         </Tile>
 
-        {/* 4 — Philosophy code snippet */}
-        <Tile index={3} className="col-span-1 lg:col-span-1">
+        {/* 3 — Philosophy code snippet */}
+        <Tile index={2} className="col-span-1 lg:col-span-1">
           <Label>Philosophy</Label>
           <div className="font-mono text-[13px] leading-7">
             <div>
@@ -83,8 +81,8 @@ function Bento() {
           </div>
         </Tile>
 
-        {/* 5 — Interests */}
-        <Tile index={4}>
+        {/* 4 — Interests */}
+        <Tile index={3}>
           <Label>Interests</Label>
           <div className="flex flex-wrap gap-2">
             {['Machine Learning', 'AI', 'Hackathons', 'Open Source', 'System Design', 'Web Dev'].map((t) => (
